@@ -5,14 +5,17 @@ import Ham from './MenuButton';
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import SideBar from "./SideBar";
+
+
 export default function Navbar(props) {
   const router = useRouter();
   
 const [toggle, setToggle]= useState(false)
   const list = ()=>{
     setToggle(!toggle)
-    console.log(toggle)
+   
   }
+  
 
   return (
     <nav className="

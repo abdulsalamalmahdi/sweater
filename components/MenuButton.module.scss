@@ -104,12 +104,12 @@ background-color: rgba(0, 0, 0, 0.027);
 }
 
 .menu_c.open > span:before {
-  background-color: #1ec7ae;
-    @include transform-rotate (5);
+  // background-color: #fcfcfc;
+    @include transform-rotate (90);
 }
 
 .menu_c.open > span:after {
-  background-color: #1ec7ae;
+  // background-color: #f8f8f8;
     @include transform-rotate (90);
 }
 

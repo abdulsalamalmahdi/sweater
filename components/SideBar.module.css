@@ -137,19 +137,31 @@
 
 .side_bar{
   position: absolute;
-  width: 50vw;
+  width: 100vw;
   height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
-  margin-top: 0;
-  margin-left: -2%;
-  background-color: rgb(252, 252, 252);
+ 
+  background-color: rgba(119, 114, 114, 0.494);
+  background-attachment: fixed;
+  z-index: 1;
  
 }
+
+.side_bar:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.side_bar:before {
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+}
+
 .content{
   position: absolute;
     width: 50vw;
     height: 100vh;
-  
     margin-left: 0;
-    background-color: rgb(255, 51, 51);
 }
