@@ -1,8 +1,22 @@
+
 import Head from "next/head"
 import React, { useEffect, useState } from "react";
+import axios from 'axios'
 function HomePage() {
 
+//const [data,setData]= useState(null);
 
+// async function  onSubmit (value) {
+ 
+//     await  axios.get('/api/getsupplier')
+//       .then((response) => {
+
+//         setData(response)
+
+//         console.log(data.error)
+//   })
+//   .catch((e) => { console.log(e)}
+//   )}
   return (
 
 
@@ -23,11 +37,11 @@ function HomePage() {
             Next.js!
           </a>
         </h1>
-
+        <button onClick={e => onSubmit()} > Send post</button>
         <p className="mt-3 text-2xl">
           Get started by editing{' '}
           <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
+            pages/index.js{}
           </code>
         </p>
 
@@ -38,7 +52,7 @@ function HomePage() {
           >
             <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
             <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
+              {}
             </p>
           </a>
 
