@@ -1,29 +1,38 @@
 
 import Head from "next/head"
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
-function HomePage() {
+import Navbar from "../components/navbar";
+import Layout from "../components/layout";
+export default function Index() {
 
-//const [data,setData]= useState(null);
+  const router= useRouter();
+const [data,setData]= useState(null);
 
-// async function  onSubmit (value) {
+async function  onSubmit (value) {
  
-//     await  axios.get('/api/getsupplier')
-//       .then((response) => {
+    await  axios.get('/api/getsupplier')
+      .then((response) => {
 
-//         setData(response)
+        setData(response.data[0])
+router.push('/api/getsupplier')
+        console.log(data)
+  })
+  .catch((e) => { console.log(e)}
+  )}
 
-//         console.log(data.error)
-//   })
-//   .catch((e) => { console.log(e)}
-//   )}
+  useEffect(()=>{
+
+  },[data])
   return (
 
 
     
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Create Next App</title>
+        <title>Sweater</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -37,7 +46,8 @@ function HomePage() {
             Next.js!
           </a>
         </h1>
-        <button onClick={e => onSubmit()} > Send post</button>
+        <button onClick={()=> onSubmit()} type="button" className="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out">Success</button>
+       
         <p className="mt-3 text-2xl">
           Get started by editing{' '}
           <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
@@ -52,7 +62,7 @@ function HomePage() {
           >
             <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
             <p className="mt-4 text-xl">
-              {}
+          {data? data.Name: "loading..."}
             </p>
           </a>
 
@@ -102,5 +112,10 @@ function HomePage() {
     </div>
   )
   }
-  
-  export default HomePage
+  Index.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
+    )
+  }

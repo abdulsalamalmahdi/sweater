@@ -9,17 +9,24 @@ import SideBar from "./SideBar";
 
 export default function Navbar(props) {
   const router = useRouter();
-  
+  useEffect(()=>{
+
+    console.log(props)
+  },[props.user])
 const [toggle, setToggle]= useState(false)
   const list = ()=>{
     setToggle(!toggle)
    
   }
-  
+    //bg-teal-300
 
   return (
     <nav className="
-    bg-teal-300
+    z-10
+    sticky top-0
+    bg-gradient-to-r 
+    from-purple-500 to-pink-500
+  
   relative
   w-full
   flex flex-wrap
@@ -77,7 +84,10 @@ const [toggle, setToggle]= useState(false)
   
   <ul className=" navbar-nav flex flex-row pl-0 list-style-none mr-auto w-960 ">
     <li className="nav-item p-2 ml-20 bg-transparent ">
-      <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 " href="#">Dashboard</a>
+      <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 " href="/">Dashboard</a>
+    </li>
+    <li className="nav-item p-2 ml-20 bg-transparent ">
+      <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 " href="/supplier">supplier</a>
     </li>
     <li className="nav-item p-2  ml-20 bg-transparent ">
       <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Team</a>
@@ -91,7 +101,7 @@ const [toggle, setToggle]= useState(false)
   
 
   
-  <div className="flex items-center relative">
+  <div className={`flex items-center relative`}>
  
   <a className="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4" href="#">
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
@@ -189,8 +199,8 @@ const [toggle, setToggle]= useState(false)
       </li>
     </ul>
   </div>
-  <div className="dropdown relative">
-    <a className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+<div className={`dropdown relative `}>
+    <a className={`dropdown-toggle flex items-center hidden-arrow  ${props.user? 'visible':'invisible'}`} href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
       <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" className="rounded-full"
         style={{ height:"25px", width: "25px"}} alt="" loading="lazy" />
