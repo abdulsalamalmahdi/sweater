@@ -1,5 +1,4 @@
-
-import {excuteQuery} from '/lib/db'
+import excuteQuery from '../../lib/db'
 
 const fs = require('fs');
 
@@ -9,42 +8,66 @@ let users = require('data/users.json');
 export const usersRepo = {
     getAll: () => users,
     getById: id => users.find(x => x.id.toString() === id.toString()),
-    find: x => users.find(x),
-    //usersRepo.find(x => x.username === user.username)
+    find,
+    //: x => users.find(x),
     create,
     update,
     delete: _delete
 };
-async function getSuppliers(){
+
+
+async function find(email) {
+
+    let foundUser;
     try {
-        // console.log("req nom", req.body)
-      const result = await excuteQuery({
-          query:'SELECT * FROM supplier',
-        //   values: [req.body.content],
-      });
-           res.send(result)
-  } catch ( error ) {
-      res.send(error)
-      console.log( error );
-  }
-  
+        console.log('find')
+        const result = await excuteQuery({
+            query: `SELECT * FROM supplier WHERE email= ?`,
+            values: [email],
+        });
+        console.log({result})
+   foundUser = await result;
+    } catch (error) {
+        // res.send(error)
+        console.log(error);
+    }
+   
+  await  console.log({foundUser})
+    return foundUser[0];
 }
+
 async function create(user) {
     // generate new user id
     // user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
-
-
-   
-
- 
-
-    // set date created and updated
+    console.log('create')
     user.dateCreated = new Date().toISOString();
     user.dateUpdated = new Date().toISOString();
+let nwUser;
+
+    try {
+        // console.log("req nom", req.body)
+console.log( [user.name, user.hash, user.email, user.phone, user.firstName, user.lastName])
+         nwUser = await excuteQuery({
+            query: `INSERT INTO supplier(name, password, email, phone, first_name, last_name) VALUES(?, ?, ?, ?, ?, ?)`,
+            values: [user.name, user.hash, user.email, user.phone, user.firstName, user.lastName],
+        });
+
+        //console.log({ results: nwUser})
+      
+        return nwUser
+    } catch (error) {
+        // res.send(error)
+        console.log(error);
+    }
+
+
+
+    // set date created and updated
+
 
     // add and save user
-    users.push(user);
-    saveData();
+
+return nwUser;
 }
 
 function update(id, params) {
@@ -63,7 +86,7 @@ function _delete(id) {
     // filter out deleted user and save
     users = users.filter(x => x.id.toString() !== id.toString());
     saveData();
-    
+
 }
 
 // private helper functions

@@ -24,9 +24,9 @@ export default function Login() {
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
 
-  function onSubmit({ username, password }) {
+  function onSubmit({ email, password }) {
     return userService
-      .login(username, password)
+      .login(email, password)
       .then(() => {
         // get return url from query parameters or default to '/'
         const returnUrl = router.query.returnUrl || "/";
@@ -41,10 +41,10 @@ export default function Login() {
         <h4 className="card-header">Login</h4>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div class="form-group mb-6">
+          <div className="form-group mb-6">
             <label
               for="exampleInputEmail2"
-              class="form-label inline-block mb-2 text-gray-700"
+              className="form-label inline-block mb-2 text-gray-700"
             >
               Email
             </label>
@@ -104,15 +104,15 @@ export default function Login() {
             />
             <div className="invalid-feedback">{errors.password?.message}</div>
 
-            <div class="flex justify-between items-center mb-6">
-              <div class="form-group form-check">
+            <div className="flex justify-between items-center mb-6">
+              <div className="form-group form-check">
                 <input
                   type="checkbox"
-                  class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                   id="exampleCheck2"
                 ></input>
                 <label
-                  class="form-check-label inline-block text-gray-800"
+                  className="form-check-label inline-block text-gray-800"
                   for="exampleCheck2"
                 >
                   Remember me
@@ -120,7 +120,7 @@ export default function Login() {
               </div>
               <a
                 href="#!"
-                class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+                className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
               >
                 Forgot password?
               </a>
@@ -153,11 +153,11 @@ export default function Login() {
               Sign in
             </button>
 
-            <p class="text-gray-800 mt-6 text-center">
+            <p className="text-gray-800 mt-6 text-center">
               Not a member?{" "}
               <a
                 href="/account/register"
-                class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+                className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
               >
                 Register
               </a>

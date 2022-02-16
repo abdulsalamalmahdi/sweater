@@ -13,12 +13,12 @@ const [data,setData]= useState(null);
 
 async function  onSubmit (value) {
  
-    await  axios.get('/api/getsupplier')
+    await  axios.get('/api/suppliers')
       .then((response) => {
 
         setData(response.data[0])
-router.push('/api/getsupplier')
-        console.log(data)
+// router.push('/api/getsupplier')
+         console.log(data)
   })
   .catch((e) => { console.log(e)}
   )}
@@ -62,7 +62,7 @@ router.push('/api/getsupplier')
           >
             <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
             <p className="mt-4 text-xl">
-          {data? data.Name: "loading..."}
+          {data? data.name: "loading..."}
             </p>
           </a>
 

@@ -12,7 +12,7 @@ function jwtMiddleware(req, res) {
             // public routes that don't require authentication
             '/api/suppliers/register',
             '/api/suppliers/authenticate',
-            '/supplier'
+           
          
         ]
     });

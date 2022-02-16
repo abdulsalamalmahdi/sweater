@@ -17,6 +17,7 @@ export default function Register() {
     firstName: Yup.string().required(<Err>First Name is required</Err>),
     lastName: Yup.string().required(<Err>Last Name is required</Err>),
     email: Yup.string().required(<Err>Email is required</Err>),
+    phone: Yup.string().required(<Err>Phone is required</Err>),
     password: Yup.string()
       .required(<Err>Password is required</Err>)
       .min(6,<Err>Password must be at least 6 characters</Err>),
@@ -148,6 +149,33 @@ export default function Register() {
               placeholder="Email address"
             />
             <div className="invalid-feedback">{errors.email?.message}</div>
+
+            <label>Phone</label>
+            <input
+              name="phone"
+              type="text"
+              {...register("phone")}
+              className={` 
+          block
+          w-full
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+          `}
+              aria-describedby="emailHelp123"
+              placeholder="Phone"
+            />
+ <div className="invalid-feedback">{errors.phone?.message}</div>
+
 
             <label>Password</label>
             <input

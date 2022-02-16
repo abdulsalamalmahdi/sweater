@@ -21,10 +21,11 @@ function get(url) {
 
 function post(url, body) {
     console.log('post')
+    console.log({post:body})
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 
-    //    ...authHeader(url) 
+       ...authHeader(url) 
     },
         credentials: 'include',
         body: JSON.stringify(body)

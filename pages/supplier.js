@@ -51,7 +51,7 @@ return (
     const res = await  axios.get('http://localhost:8000/api/suppliers')
    
      const data = res.data
-  console.log(data)
+ 
     // Pass data to the page via props
     return { props: { data } }
   }

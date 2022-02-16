@@ -8,15 +8,23 @@ export default apiHandler({
     post: register
 });
 
- function register(req, res) {
+ async function register(req, res) {
     // split out password from user details 
-    const { password, ...user } = req.body;
-   
-
+  let exists;
+ const { password, ...user } = req.body;
+  
     // validate
    // console.log({find:usersRepo.find(x => x.username === user.username)})
-    if (usersRepo.find(x => x.username === user.username))
-        throw `User with the fucking username "${user.username}" already exists`;
+
+ exists= await usersRepo.find(user.email)
+              .then(u=>{
+                         console.log(u)
+                         return u}
+                         )
+              .catch(err=>console.log(err))
+   console.log({findresult:exists})
+    if (exists)
+        throw `User with the fucking email "${user.email}" already exists`;
 
     // hash password
     user.hash = bcrypt.hashSync(password, 10);    
