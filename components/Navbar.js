@@ -9,17 +9,24 @@ import SideBar from "./SideBar";
 
 export default function Navbar(props) {
   const router = useRouter();
-  
+  useEffect(()=>{
+
+    console.log(props)
+  },[props.user])
 const [toggle, setToggle]= useState(false)
   const list = ()=>{
     setToggle(!toggle)
    
   }
-  
+    //bg-teal-300
 
   return (
     <nav className="
-    bg-teal-300
+    z-10
+    sticky top-0
+    bg-gradient-to-r 
+    from-purple-500 to-pink-500
+  
   relative
   w-full
   flex flex-wrap
@@ -77,7 +84,10 @@ const [toggle, setToggle]= useState(false)
   
   <ul className=" navbar-nav flex flex-row pl-0 list-style-none mr-auto w-960 ">
     <li className="nav-item p-2 ml-20 bg-transparent ">
-      <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 " href="#">Dashboard</a>
+      <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 " href="/">Dashboard</a>
+    </li>
+    <li className="nav-item p-2 ml-20 bg-transparent ">
+      <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 " href="/supplier">supplier</a>
     </li>
     <li className="nav-item p-2  ml-20 bg-transparent ">
       <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Team</a>
@@ -91,7 +101,7 @@ const [toggle, setToggle]= useState(false)
   
 
   
-  <div className="flex items-center relative">
+  <div className={`flex items-center relative`}>
  
   <a className="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4" href="#">
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
@@ -118,7 +128,7 @@ const [toggle, setToggle]= useState(false)
           d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z">
         </path>
       </svg>
-      <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">1</span>
+      <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">0</span>
     </a>
     <ul className="
       dropdown-menu
@@ -189,8 +199,8 @@ const [toggle, setToggle]= useState(false)
       </li>
     </ul>
   </div>
-  <div className="dropdown relative">
-    <a className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+<div className={`dropdown relative `}>
+    <a className={`dropdown-toggle flex items-center hidden-arrow  ${props.user? 'visible':'invisible'}`} href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
       <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" className="rounded-full"
         style={{ height:"25px", width: "25px"}} alt="" loading="lazy" />

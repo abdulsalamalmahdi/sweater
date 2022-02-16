@@ -12,8 +12,8 @@ export default function Layout({ children }) {
    <>
      <SideBar></SideBar>
    
-      <Navbar />
-      <main>{children}</main>
+      {/* <Navbar /> */}
+      <main className=''>{children}</main>
       
       <Footer />
    </>

@@ -141,7 +141,7 @@
   height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
  
-  background-color: rgba(119, 114, 114, 0.494);
+  background-color: rgba(119, 114, 114, 0.9);
   background-attachment: fixed;
   z-index: 1;
  

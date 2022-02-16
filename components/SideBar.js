@@ -8,7 +8,7 @@ const {ham}= useHam()
  
   
      <div  className={` ${styles.side_bar} ${ham? 'visible':'invisible'}  transition  delay-150  duration-700`}>
-      
+      Sidebar
       <div className={`${styles.content}`}>
     
      </div>

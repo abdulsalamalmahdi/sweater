@@ -17,7 +17,7 @@ export default function Ham(props) {
    },[])
 
 return (
-    <div  onClick={()=>{tic()}} id={styles.menu} className={`${styles.menu_c} ${ham? styles.open +" " + styles.radius:""} `}>
+    <div  onClick={()=>{tic()}} id={styles.menu} className={`${styles.menu_c} ${ham? styles.open +" " + styles.radius + "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500":""} `}>
       <span></span>
     </div>
 )
